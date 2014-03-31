@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="1.6">
+    <name>Kutafuta</name>
+    <author>Jasper van Rijbroek</author>
+    <creationDate>March 2014</creationDate>
+    <packagename>kutafuta</packagename>
+    <version>1.0.0</version>
+    <url>http://www.moyoweb.nl/</url>
+    <packager>Jasper van Rijbroek</packager>
+    <packagerurl>http://www.moyoweb.nl/</packagerurl>
+    <description>Kutafuta Package</description>
+    <files folder="packages">
+        <file type="component" id="kutafuta">component</file>
+    </files>
+</extension>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0.0" method="upgrade" overwrite="true">
+	<name>Kutafuta</name>
+	<identifier>com:kutafuta</identifier>
+	<author>Jasper van Rijbroek</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>(C) 2013 Jasper van Rijbroek. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later.</license>
+	<authorEmail>jasper@moyoweb.nl</authorEmail>
+	<authorUrl>www.moyoweb.nl</authorUrl>
+	<version>1.0.0</version>
+	<description>Universal Search Plugin</description>
+
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">install/install.sql</file>
+		</sql>
+	</install>
+
+	<administration>
+		<files folder="administrator/components/com_kutafuta">
+			<folder>databases</folder>
+			<folder>install</folder>
+			<folder>models</folder>
+
+			<file>kutafuta.xml</file>
+		</files>
+	</administration>
+</extension>

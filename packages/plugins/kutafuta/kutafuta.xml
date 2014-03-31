@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.1" type="plugin" group="search">
+	<name>Kutafuta search plugin</name>
+	<author>Jasper van Rijbroek</author>
+	<creationDate>March 2014</creationDate>
+	<copyright>Copyright (C) 2005 - 2014 Moyo Web Architects. All rights reserved.</copyright>
+	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
+	<authorEmail>jasper@moyoweb.nl</authorEmail>
+	<authorUrl>moyoweb.nl</authorUrl>
+	<version>0.1.0</version>
+	<description>Universal Search Plugin</description>
+	<files>
+		<filename plugin="kutafuta">kutafuta.php</filename>
+		<filename>kutafuta.xml</filename>
+	</files>
+</extension>
