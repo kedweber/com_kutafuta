@@ -16,7 +16,7 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 
 		parent::_buildQueryWhere($query);
 
-		if($state->kutafuta_search_id) {
+		if($state->route_id) {
 			$query->where('tbl.route_id', '=', $state->route_id);
 		}
 
