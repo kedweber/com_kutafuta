@@ -26,15 +26,12 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 
 		if($state->search) {
 			$sql = '';
-			foreach(explode(' ',$state->search) as $term):
-				$sql .= 'MATCH(tbl.value) AGAINST (\'+'. strtoupper($term) .'*\' IN BOOLEAN MODE)';
-				if($i < count(explode(' ',$state->search))) {
-					$sql .= ' OR ';
-				}
-
-				$i++;
+            $terms = '';
+			foreach(explode(' ',$state->search) as $term) :
+                $terms .= '+' . $term . ' ';
 			endforeach;
-			$query->where('('.$sql.')', null, null);
+            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'*\' IN BOOLEAN MODE)';
+			$query->where($sql, null, null);
 		}
 	}
 
