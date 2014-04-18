@@ -15,18 +15,22 @@ class ComKutafutaControllerBehaviorIndexable extends KControllerBehaviorAbstract
 
         foreach($items as $item)
         {
-            // Security Check for files and urls
-            if(!empty($item->urls)) {
-                $item->urls = json_decode(json_encode($item->urls), true);
-            }
+            $elements = $this->getService('com://admin/cck.model.elements')
+                ->cck_fieldset_id($item->cck_fieldset_id)
+                ->getList();
 
-            if(!empty($item->files)) {
-                $item->files = json_decode(json_encode($item->files), true);
+            foreach($item->getData() as $key => $value) {
+                $element = $elements->find(array('slug' => $key));
+
+                if(!$element->count()) continue;
+
+                if($element->type === 'Urls' || $element->type === 'Files') {
+                    $item->$key = json_decode(json_encode($item->$key), true);
+                }
             }
 
             $item->save();
         }
-
 
         JFactory::getApplication()->redirect(KRequest::referrer(), JText::_(count($items) . ' items are reindexed'));
     }
