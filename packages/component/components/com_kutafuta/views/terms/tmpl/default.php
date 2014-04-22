@@ -1,9 +1,9 @@
 <? defined('KOOWA') or die('Restricted Access'); ?>
 
 <div class="com_search">
-    <form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_search');?>" method="post">
+    <form id="searchForm" action="<?php echo JRoute::_('index.php?option=com_kutafuta&view=terms');?>" method="post">
         <div class="input-group">
-            <input type="text" name="searchword" placeholder="<?php echo JText::_('Keyword'); ?>" id="search-searchword" value="<?= @escape($state->search); ?>" class="form-control" />
+            <input type="text" name="search" placeholder="<?php echo JText::_('Keyword'); ?>" id="search-searchword" value="<?= @escape($state->search); ?>" class="form-control" />
             <span name="Search" onclick="getElementById('searchForm').submit()" class="btn hasTooltip input-group-addon" title="<?php echo JHtml::tooltipText('COM_SEARCH_SEARCH');?>">
                 <span class="icon-search"></span>
             </span>
