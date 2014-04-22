@@ -26,4 +26,13 @@
 			<file>kutafuta.xml</file>
 		</files>
 	</administration>
+
+	<files folder="site">
+		<folder>databases</folder>
+		<folder>models</folder>
+		<folder>templates</folder>
+		<folder>views</folder>
+		<file>dispatcher.php</file>
+		<file>kitafuta.php</file>
+	</files>
 </extension>
