@@ -13,7 +13,7 @@
     <ul class="results" id="container">
         <? foreach($terms as $result) : ?>
             <li>
-                <a href="<?php echo JRoute::_('index.php?'.$result->query); ?>"><?php echo $result->getRelatedData()->title; ?></a>
+                <a href="<?php echo JRoute::_('index.php?'.$result->query); ?>"><?= $result->getRelatedData()->title; ?></a>
             </li>
         <? endforeach; ?>
     </ul>
@@ -25,8 +25,9 @@
         unset($test['offset']);
         $params = http_build_query($test);
         ?>
+
         <footer>
-            <?= @helper('com://site/moyo.template.helper.paginator.pagination', array('total' => $total, 'limit' => $state->limit)); ?>
+            <?= @helper('com://site/moyo.template.helper.paginator.pagination', array('total' => $totalCount, 'ajax' => true, 'limit' => $state->limit, 'url' => @route('option=com_kutafuta&view=terms&'.$params.'&layout=results&format=raw'), 'height' => 200)); ?>
         </footer>
     <? endif; ?>
 </div>
