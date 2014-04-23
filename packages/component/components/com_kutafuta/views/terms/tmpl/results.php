@@ -2,6 +2,6 @@
 
 <? foreach($terms as $result) : ?>
     <li>
-        <a href="<?php echo $result->href; ?>"><?php echo $result->getRelatedData()->title; ?></a>
+        <a href="<?php echo JRoute::_('index.php?'.$result->query); ?>"><?= $result->getRelatedData()->title; ?></a>
     </li>
 <? endforeach; ?>
