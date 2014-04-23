@@ -9,9 +9,10 @@ class ComKutafutaControllerBehaviorIndexable extends KControllerBehaviorAbstract
 
         $modelIdentifier = clone $context->caller->getIdentifier();
         $modelIdentifier->path = array('model');
+        $modelIdentifier->name = KInflector::pluralize($modelIdentifier->name);
 
         $model = $this->getService($modelIdentifier);
-        $items = $model->limit(0)->getList();
+        $items = $model->limit(0)->enabled(1)->getList();
 
         foreach($items as $item)
         {
