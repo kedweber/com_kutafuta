@@ -10,15 +10,29 @@
         </div>
     </form>
 
-    <ul class="results" id="container">
-        <? foreach($terms as $result) : ?>
-            <li>
-                <a href="<?php echo JRoute::_('index.php?'.$result->query); ?>"><?= $result->getRelatedData()->title; ?></a>
-            </li>
-        <? endforeach; ?>
-    </ul>
+    <? if($state->search && strlen($state->search) > 3 && count($terms) > 0) : ?>
+        <ul class="results" id="container">
+            <? foreach($terms as $result) : ?>
+                <li>
+                    <a href="<?php echo JRoute::_('index.php?'.$result->query); ?>"><?= $result->getRelatedData()->title; ?></a>
+                </li>
+            <? endforeach; ?>
+        </ul>
+    <? elseif($state->search && strlen($state->search) <= 3) : ?>
+        <p>
+            <?= @text('Search string too short'); ?>
+        </p>
+    <? elseif(count($terms) <= 0) : ?>
+        <p>
+            <?= @text('No matches found'); ?>
+        </p>
+    <? elseif(!$state->search) : ?>
+        <p>
+            <?= @text('No search string given'); ?>
+        </p>
+    <? endif; ?>
 
-    <? if ($total > $terms->count()) : ?>
+    <? if ($total > $terms->count() && $state->search && strlen($state->search) > 3) : ?>
         <?
         $test = $state->getData();
         unset($test['limit']);
