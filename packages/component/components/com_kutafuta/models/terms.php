@@ -77,11 +77,10 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
             $sql = '';
             $terms = '';
             foreach(explode(' ',$state->search) as $term) :
-                $terms .= '+' . $term . ' ';
+                $terms .= '+' . $term . '*:';
             endforeach;
-            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'*\')';
+            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'\' IN BOOLEAN MODE) ';
         }
-
         return $sql;
     }
 }
