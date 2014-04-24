@@ -6,8 +6,9 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 		parent::__construct($config);
 
 		$this->_state
-			->insert('route_id', 'int')
-			->insert('lang', 'string', substr(JFactory::getLanguage()->getTag(), 0, 2));
+			->insert('table', 'string')
+            ->insert('row'  , 'int')
+			->insert('lang' , 'string', substr(JFactory::getLanguage()->getTag(), 0, 2));
 	}
 
 	protected function _buildQueryWhere(KDatabaseQuery $query) {
@@ -16,23 +17,21 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 
 		parent::_buildQueryWhere($query);
 
-		if($state->route_id) {
-			$query->where('tbl.route_id', '=', $state->route_id);
+		if($state->table) {
+			$query->where('tbl.table', '=', $state->table);
+		}
+
+        if($state->row) {
+			$query->where('tbl.row', '=', $state->row);
 		}
 
 		if($state->lang) {
 			$query->where('tbl.lang', '=', $state->lang);
 		}
 
-		if($state->search) {
-			$sql = '';
-            $terms = '';
-			foreach(explode(' ',$state->search) as $term) :
-                $terms .= '+' . $term . ' ';
-			endforeach;
-            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'*\' IN BOOLEAN MODE)';
-			$query->where($sql, null, null);
-		}
+        if($state->search) {
+            $query->where($this->_matchAgainst(), null, null);
+        }
 	}
 
 	protected function _buildQueryGroup(KDatabaseQuery $query) {
@@ -41,17 +40,8 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 		parent::_buildQueryGroup($query);
 
 		if($state->search) {
-			$query->group('tbl.route_id');
-		}
-	}
-
-	protected function _buildQueryJoins(KDatabaseQuery $query) {
-		$state = $this->_state;
-
-		parent::_buildQueryJoins($query);
-
-		if($state->search) {
-			$query->join('inner', '#__routes AS searches', 'tbl.route_id = searches.id');
+			$query->group('tbl.table');
+			$query->group('tbl.row');
 		}
 	}
 
@@ -61,7 +51,32 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
 		parent::_buildQueryColumns($query);
 
 		if($state->search) {
-			$query->select('searches.*');
+            $query->select($this->_matchAgainst() . ' AS relevance');
 		}
 	}
+
+    protected function _buildQueryOrder(KDatabaseQuery $query) {
+        $state = $this->_state;
+
+        parent::_buildQueryOrder($query);
+
+        if($state->search) {
+            $query->order('relevance', 'DESC');
+        }
+    }
+
+    private function _matchAgainst() {
+        $state = $this->_state;
+
+        if($state->search) {
+            $sql = '';
+            $terms = '';
+            foreach(explode(' ',$state->search) as $term) :
+                $terms .= '+' . $term . ' ';
+            endforeach;
+            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'*\')';
+        }
+
+        return $sql;
+    }
 }

@@ -12,7 +12,7 @@ class ComKutafutaControllerBehaviorIndexable extends KControllerBehaviorAbstract
         $modelIdentifier->name = KInflector::pluralize($modelIdentifier->name);
 
         $model = $this->getService($modelIdentifier);
-        $items = $model->limit(0)->enabled(1)->getList();
+        $items = $model->limit(0)->getList();
 
         foreach($items as $item)
         {
@@ -33,6 +33,6 @@ class ComKutafutaControllerBehaviorIndexable extends KControllerBehaviorAbstract
             $item->save();
         }
 
-        JFactory::getApplication()->redirect(KRequest::referrer(), JText::_(count($items) . ' items are reindexed'));
+        JFactory::getApplication()->redirect(KRequest::referrer(), JText::_(ucfirst($modelIdentifier->name) . ' reindexed'));
     }
 }
