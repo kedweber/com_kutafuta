@@ -69,14 +69,7 @@ class ComKutafutaModelTerms extends ComDefaultModelDefault
         $state = $this->_state;
 
         if($state->search) {
-            $sql = '';
-            $terms = '';
-            foreach(explode(' ',$state->search) as $term) :
-                $terms .= '+' . $term . ' ';
-            endforeach;
-            $sql .= 'MATCH(tbl.value) AGAINST (\''. strtoupper($terms) .'*\')';
+            return 'MATCH(tbl.value) AGAINST (\''. strtoupper($state->search) .'*\')';
         }
-
-        return $sql;
     }
 }
