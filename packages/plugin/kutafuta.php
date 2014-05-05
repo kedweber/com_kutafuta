@@ -12,11 +12,10 @@ class PlgSearchKutafuta extends JPlugin
             $rowset = KService::get('com://admin/kutafuta.model.terms')->search($text)->getList();
 
             foreach($rowset as $row) {
-                parse_str(parse_url($row->url, PHP_URL_QUERY), $data);
-
-                $parts = explode('_', $data['option']);
-
-                $data = KService::get('com://site/'.$parts[1].'.model.'.KInflector::pluralize($data['view']))->id($data['id'])->getItem();
+                // We have table and row.
+                // Row is always multiple but we check non the less.
+                $parts = explode('_', $row->table);
+                $data = KService::get('com://site/'.$parts[0].'.model.'.KInflector::pluralize($parts[1]))->id($row->row)->getItem();
 
                 if(empty($data->id)) {
                     continue;
@@ -28,7 +27,7 @@ class PlgSearchKutafuta extends JPlugin
                 $result->metakey = $data->meta_keywords;
                 $result->created = $data->created_on;
                 $result->text = $data->introtext . $data->fulltext;
-                $result->href = $row->url;
+                $result->href = 'index.php?option=com_' . $parts[0] . '&view=' . KInflector::singularize($parts[1]) . '&id=' . $row->row;
 
                 $rows[] = $result;
             }
