@@ -1,5 +1,4 @@
-DROP TABLE IF EXISTS `#__kutafuta_terms`;
-CREATE TABLE `#__kutafuta_terms` (
+CREATE TABLE IF NOT EXISTS `#__kutafuta_terms` (
   `kutafuta_term_id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `value` text NOT NULL,
   `lang` varchar(255) NOT NULL,
