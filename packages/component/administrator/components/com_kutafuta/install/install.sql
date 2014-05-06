@@ -7,4 +7,4 @@ CREATE TABLE `#__kutafuta_terms` (
   `row` bigint NOT NULL,
   PRIMARY KEY (`kutafuta_term_id`),
   FULLTEXT KEY `search` (`value`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
