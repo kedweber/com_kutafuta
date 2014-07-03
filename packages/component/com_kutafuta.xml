@@ -19,20 +19,16 @@
 
 	<administration>
 		<files folder="administrator/components/com_kutafuta">
+			<folder>controllers</folder>
 			<folder>databases</folder>
 			<folder>install</folder>
 			<folder>models</folder>
-
-			<file>kutafuta.xml</file>
 		</files>
 	</administration>
 
 	<files folder="components/com_kutafuta">
-		<folder>databases</folder>
-		<folder>models</folder>
-		<folder>templates</folder>
 		<folder>views</folder>
 		<file>dispatcher.php</file>
-		<file>kitafuta.php</file>
+		<file>kutafuta.php</file>
 	</files>
 </extension>

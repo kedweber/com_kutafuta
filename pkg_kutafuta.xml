@@ -11,5 +11,6 @@
     <description>Kutafuta Package</description>
     <files folder="packages">
         <file type="component" id="kutafuta">component</file>
+        <file type="plugin" id="kutafuta">plugins</file>
     </files>
 </extension>
