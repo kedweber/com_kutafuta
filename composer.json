@@ -1,0 +1,17 @@
+{
+    "name": "moyo/kutafuta",
+    "type": "joomlatools-installer",
+    "description": "Kutafuta Package",
+    "keywords": ["joomla", "moyo"],
+    "homepage": "https://moyoweb.assembla.com/code/moyo-content/git-23/nodes",
+    "authors": [
+        {
+            "name": "Jasper van Rijbriek",
+            "email": "jasper@moyoweb.nl",
+            "homepage": "http://www.moyoweb.nl"
+        }
+    ],
+    "require": {
+        "joomlatools/installer": "*"
+    }
+}
