@@ -4,12 +4,12 @@ defined('_JEXEC') or die;
 
 class PlgSearchKutafuta extends JPlugin
 {
-	public function onContentSearch($text, $phrase = '', $ordering = '', $areas = null)
+    public function onContentSearch($text, $phrase = '', $ordering = '', $areas = null)
 	{
         if($text) {
             $rows = array();
 
-            $rowset = KService::get('com://admin/kutafuta.model.terms')->search($text)->getList();
+            $rowset = KService::get('com://admin/kutafuta.model.terms')->type($phrase)->search($text)->getList();
 
             foreach($rowset as $row) {
                 // We have table and row.
