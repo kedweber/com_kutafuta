@@ -27,7 +27,10 @@
 	</administration>
 
 	<files folder="components/com_kutafuta">
+		<folder>language</folder>
+		<folder>templates</folder>
 		<folder>views</folder>
+        
 		<file>dispatcher.php</file>
 		<file>kutafuta.php</file>
 	</files>
