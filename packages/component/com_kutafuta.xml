@@ -31,4 +31,8 @@
 		<file>dispatcher.php</file>
 		<file>kutafuta.php</file>
 	</files>
+
+    <media folder="media">
+        <folder>com_kutafuta/less</folder>
+    </media>
 </extension>
