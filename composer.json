@@ -1,9 +1,9 @@
 {
-    "name": "moyo/kutafuta",
+    "name": "cta/kutafuta",
     "type": "joomlatools-installer",
     "description": "Kutafuta Package",
     "keywords": ["joomla", "moyo"],
-    "homepage": "https://moyoweb.assembla.com/code/moyo-content/git-23/nodes",
+    "homepage": "https://github.com/cta-int/kutafuta",
     "authors": [
         {
             "name": "Jasper van Rijbriek",
