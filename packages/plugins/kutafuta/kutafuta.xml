@@ -10,7 +10,7 @@
 	<version>1.0.2</version>
 	<description>Universal Search Plugin</description>
 	<files>
-		<filename plugin="kutafuta">kutafuta.php</filename>
-		<filename>kutafuta.xml</filename>
+		<file plugin="kutafuta">kutafuta.php</file>
+		<file>kutafuta.xml</file>
 	</files>
 </extension>
