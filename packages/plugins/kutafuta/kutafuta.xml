@@ -7,7 +7,7 @@
 	<license>GNU General Public License version 3 or later; see LICENSE.txt</license>
 	<authorEmail>jasper@moyoweb.nl</authorEmail>
 	<authorUrl>moyoweb.nl</authorUrl>
-	<version>1.0.2</version>
+	<version>1.0.4</version>
 	<description>Universal Search Plugin</description>
 	<files>
 		<file plugin="kutafuta">kutafuta.php</file>
