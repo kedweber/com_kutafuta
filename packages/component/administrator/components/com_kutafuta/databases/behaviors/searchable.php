@@ -43,7 +43,7 @@ class ComKutafutaDatabaseBehaviorSearchable extends KDatabaseBehaviorAbstract
 
         if($context->data->enabled) {
             if($context->data->isTranslatable()) {
-                if(!$context->data->translated) {
+                if(!$context->data->translated && !$context->data->original) {
                     return;
                 }
             }

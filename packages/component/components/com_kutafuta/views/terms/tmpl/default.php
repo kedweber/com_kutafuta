@@ -20,15 +20,15 @@
         </ul>
     <? elseif($state->search && strlen($state->search) <= 3) : ?>
         <p>
-            <?= @text('A search string should at least have three characters'); ?>
+            <?= @text('AT_LEAST_4_CHARACTERS'); ?>
         </p>
     <? elseif(count($terms) <= 0) : ?>
         <p>
-            <?= @text('No matches found'); ?>
+            <?= @text('NO_MATCHES_FOUND'); ?>
         </p>
     <? elseif(!$state->search) : ?>
         <p>
-            <?= @text('Please enter a search string'); ?>
+            <?= @text('EMPTY_SEARCH_STRING'); ?>
         </p>
     <? endif; ?>
 

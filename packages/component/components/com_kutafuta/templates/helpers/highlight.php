@@ -5,7 +5,7 @@ class ComKutafutaTemplateHelperHighlight extends KTemplateHelperAbstract
     /**
      * This function will highlight the search term in kutafuta.
      * The behavior is exactly the same as in the Joomla search.
-     * 
+     *
      * @param array $config
      * @return String The text with the search term highlighted.
      */
@@ -19,7 +19,7 @@ class ComKutafutaTemplateHelperHighlight extends KTemplateHelperAbstract
             'highlight_start'   => '<span class="highlight">',
             'highlight_end'     => '</span>'
         ));
-        
+
         switch($config->type) {
             case 'all':
             case 'any':
@@ -27,14 +27,20 @@ class ComKutafutaTemplateHelperHighlight extends KTemplateHelperAbstract
 
                 foreach($words as $word)
                 {
-                    $config->text = str_replace($word, $config->highlight_start . $word . $config->highlight_end, $config->text);
+                    $pattern = '/(' . $word . ')/i';
+                    $replace = $config->highlight_start . '${1}' . $config->highlight_end;
+
+                    $config->text = preg_replace($pattern, $replace, $config->text);
                 }
                 break;
             case 'exact':
-                $config->text = str_replace($config->term, $config->highlight_start . $config->term . $config->highlight_end, $config->text);
+                $pattern = '/(' . $config->term . ')/i';
+                $replace = $config->highlight_start . '${1}' . $config->highlight_end;
+
+                $config->text = preg_replace($pattern, $replace, $config->text);
                 break;
         }
-        
+
         return $config->text;
     }
 }

@@ -26,16 +26,16 @@ section:
 
 ```json
 {
-    "name": "moyo/kutafuta",
+    "name": "cta/kutafuta",
     "type": "vcs",
-    "url": "https://git.assembla.com/moyo-content.kutafuta.git"
+    "url": "https://github.com/cta-int/kutafuta.git"
 }
 ```
 
 The require section should contain the following line:
 
 ```json
-    "moyo/kutafuta": "1.0.*",
+    "cta/kutafuta": "1.0.*",
 ```
 
 Afterward, just run `composer update` from the root of your Joomla project.
