@@ -2,7 +2,7 @@
     "name": "cta/kutafuta",
     "type": "joomlatools-installer",
     "description": "Kutafuta Package",
-    "keywords": ["joomla", "moyo"],
+    "keywords": ["joomla", "nooku", "kutafuta", "search"],
     "homepage": "https://github.com/cta-int/kutafuta",
     "authors": [
         {
