@@ -27,14 +27,14 @@ class ComKutafutaTemplateHelperHighlight extends KTemplateHelperAbstract
 
                 foreach($words as $word)
                 {
-                    $pattern = '/(' . $word . ')/i';
+                    $pattern = '/\b(' . $word . ')\b/i';
                     $replace = $config->highlight_start . '${1}' . $config->highlight_end;
 
                     $config->text = preg_replace($pattern, $replace, $config->text);
                 }
                 break;
             case 'exact':
-                $pattern = '/(' . $config->term . ')/i';
+                $pattern = '/\b(' . $config->term . ')\b/i';
                 $replace = $config->highlight_start . '${1}' . $config->highlight_end;
 
                 $config->text = preg_replace($pattern, $replace, $config->text);
