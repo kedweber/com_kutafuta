@@ -2,14 +2,14 @@
 <extension type="component" version="3.0.0" method="upgrade" overwrite="true">
 	<name>Kutafuta</name>
 	<identifier>com:kutafuta</identifier>
-	<author>Jasper van Rijbroek</author>
+	<author>Moyo Web Architects</author>
 	<creationDate>March 2014</creationDate>
 	<copyright>(C) 2013 Jasper van Rijbroek. All rights reserved.</copyright>
 	<license>GNU General Public License version 3 or later.</license>
 	<authorEmail>jasper@moyoweb.nl</authorEmail>
 	<authorUrl>www.moyoweb.nl</authorUrl>
-	<version>1.0.4</version>
-	<description>Universal Search Plugin</description>
+	<version>1.0.5</version>
+	<description>Search Plugin with support for the Moyo CCK</description>
 
 	<install>
 		<sql>
