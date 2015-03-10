@@ -2,40 +2,40 @@
 
 class ComKutafutaDatabaseBehaviorSearchable extends KDatabaseBehaviorAbstract
 {
-	/**
-	 * @param KCommandContext $context
-	 */
-	public function _afterTableInsert(KCommandContext $context)
-	{
-		$this->updateIndex($context);
-	}
+    /**
+     * @param KCommandContext $context
+     */
+    public function _afterTableInsert(KCommandContext $context)
+    {
+        $this->updateIndex($context);
+    }
 
-	/**
-	 * @param KCommandContext $context
-	 */
-	public function _afterTableUpdate(KCommandContext $context)
-	{
-		$this->updateIndex($context);
-	}
+    /**
+     * @param KCommandContext $context
+     */
+    public function _afterTableUpdate(KCommandContext $context)
+    {
+        $this->updateIndex($context);
+    }
 
-	/**
-	 * @param KCommandContext $context
-	 */
-	public function _beforeTableDelete(KCommandContext $context)
-	{
+    /**
+     * @param KCommandContext $context
+     */
+    public function _beforeTableDelete(KCommandContext $context)
+    {
         $table  = $context->data->getTable()->getName();
         $row    = $context->data->id;
 
         // Remove the existing rows from the table.
         $this->getService('com://admin/kutafuta.model.terms')->table($table)->row($row)->getList()->delete();
-	}
+    }
 
-	/**
-	 * @param KCommandContext $context
-	 */
-	public function updateIndex(KCommandContext $context)
-	{
-		$filter = KService::get('koowa:filter.string');
+    /**
+     * @param KCommandContext $context
+     */
+    public function updateIndex(KCommandContext $context)
+    {
+        $filter = KService::get('koowa:filter.string');
         $table  = $context->data->getTable()->getName();
         $row    = $context->data->id;
 
@@ -61,17 +61,19 @@ class ComKutafutaDatabaseBehaviorSearchable extends KDatabaseBehaviorAbstract
             {
                 foreach($context->data->getElements() as $key => $value)
                 {
-                    if($filter->validate(strip_tags($value->value)) && !empty($value->value) && !is_numeric($value->value))
+                    $val = $context->data->{$value->slug};
+
+                    if($filter->validate(strip_tags($val)) && !empty($val) && !is_numeric($val))
                     {
                         $this->getService('com://admin/kutafuta.database.row.term')->setData(array(
                             'table' => $table,
                             'row'   => $row,
-                            'value' => trim(strip_tags($value->value)),
+                            'value' => trim(strip_tags($val)),
                             'lang'  => substr(JFactory::getLanguage()->getTag(), 0, 2)
                         ))->save();
                     }
                 }
             }
         }
-	}
+    }
 }
