@@ -16,20 +16,6 @@ class ComKutafutaControllerBehaviorIndexable extends KControllerBehaviorAbstract
 
         foreach($items as $item)
         {
-            $elements = $this->getService('com://admin/cck.model.elements')
-                ->cck_fieldset_id($item->cck_fieldset_id)
-                ->getList();
-
-            foreach($item->getData() as $key => $value) {
-                $element = $elements->find(array('slug' => $key));
-
-                if(!$element->count()) continue;
-
-                if($element->type === 'Urls' || $element->type === 'Files') {
-                    $item->$key = json_decode(json_encode($item->$key), true);
-                }
-            }
-
             $item->save();
         }
 
