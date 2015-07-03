@@ -1,9 +1,9 @@
 {
-    "name": "cta/kutafuta",
+    "name": "moyo/kutafuta",
     "type": "joomlatools-installer",
     "description": "Kutafuta Package",
     "keywords": ["joomla", "nooku", "kutafuta", "search"],
-    "homepage": "https://github.com/cta-int/kutafuta",
+    "homepage": "https://github.com/moyoweb/com_kutafuta",
     "authors": [
         {
             "name": "Jasper van Rijbriek",
